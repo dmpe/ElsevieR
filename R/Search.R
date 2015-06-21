@@ -7,7 +7,7 @@
 #' @import jsonlite
 ScienceDirect_SearchJson <- function(query){
 
-  query <- list(query = "genom", apiKey = "7f5eff1eb026d6dff5574fc165e297ee")
+  query <- list(query = "genom", apiKey = "5b4c22442fdb5685587b566c7de8a567")
   searchSci <- "http://api.elsevier.com:80/content/search/scidir"
 
   return_request <- GET(searchSci, query = query)
@@ -28,7 +28,7 @@ ScienceDirect_SearchJson <- function(query){
 #' @import xml2
 ScienceDirect_SearchXML <- function(query){
   
-  query <- list(query = "genom", apiKey = "7f5eff1eb026d6dff5574fc165e297ee")
+  query <- list(query = "genom", apiKey = "5b4c22442fdb5685587b566c7de8a567")
   searchSci <- "http://api.elsevier.com:80/content/search/scidir"
   
   return_request <- GET(searchSci, query = query, accept("application/xml"))
@@ -50,7 +50,7 @@ ScienceDirect_SearchXML <- function(query){
 #' @import jsonlite
 Citations_Overview_Json <- function(query){
   
-  query <- list(doi = "10.1016/S0014-5793(01)03313-0", apiKey = "7f5eff1eb026d6dff5574fc165e297ee")
+  query <- list(doi = "10.1016/S0014-5793(01)03313-0", apiKey = "5b4c22442fdb5685587b566c7de8a567")
   searchSci <- "http://api.elsevier.com:80/content/abstract/citation-count"
   
   return_request <- GET(searchSci, query = query)
