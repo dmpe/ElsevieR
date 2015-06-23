@@ -1,7 +1,11 @@
 
 #' Test with JSON
 #' @param ScienceDirect search query string
-#'
+#' 
+#' Load libraries & execute code manually
+#' 
+#' library(httr)
+#' library(jsonlite)
 #'
 #' @import httr
 #' @import jsonlite
@@ -14,6 +18,8 @@ ScienceDirect_SearchJson <- function(query){
   stop_for_status(return_request)
   text_response <- content(return_request, as = "text")
   json_response <- fromJSON(text_response)
+  df_search <- data.frame(json_response$`search-results`$entry)
+  
   return(json_response)
 
 }
@@ -23,9 +29,12 @@ ScienceDirect_SearchJson <- function(query){
 #' Test with XML
 #' @param ScienceDirect search query string
 #'
-#'
+#' library(xml2)
+#' library(XML)
+#' 
 #' @import httr
 #' @import xml2
+#' @import XML
 ScienceDirect_SearchXML <- function(query){
   
   query <- list(query = "genom", apiKey = "5b4c22442fdb5685587b566c7de8a567")
@@ -34,6 +43,13 @@ ScienceDirect_SearchXML <- function(query){
   return_request <- GET(searchSci, query = query, accept("application/xml"))
   stop_for_status(return_request)
   text_response <- content(return_request, as = "text")
+  
+  #XML
+  xmlBig <- xmlTreeParse(text_response, asText=TRUE)
+  xmlBig <- xmlToList(xmlBig)
+  # https://stackoverflow.com/questions/17198658/how-to-parse-xml-to-r-data-frame
+  xmlBig2 <- xmlToDataFrame(xmlBig)
+  #xml2
   xml_response <- read_xml(text_response)
   return(xml_response)
 #   head(xml_structure(xml_response),1)
