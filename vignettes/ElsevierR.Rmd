@@ -1,5 +1,5 @@
 ---
-title: "Elsevier R"
+title: "ElsevierR Tutorial"
 author: "dmpe @ github"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
@@ -62,9 +62,9 @@ Also a quote using `>`:
 
 ### What has (not) been implemented:
 
-Based on <http://dev.bitly.com/>
+Based on <http://dev.elsevier.com/>
 
-<http://dev.bitly.com/user_info.html>  | Implemented Yes/No
+<http://dev.elsevier.com/search.html>  | Implemented Yes/No
 ------------- | -------------
 /v3/oauth/app  | (**NOT**, see below)
 /v3/user/info  | Yes
@@ -72,7 +72,7 @@ Based on <http://dev.bitly.com/>
 /v3/user/network_history  | **NOT**
 /v3/user/tracking_domain_list  | Yes
 
-<http://dev.bitly.com/link_metrics.html>  | Implemented Yes/No
+<http://dev.elsevier.com/retrieval.html>  | Implemented Yes/No
 ------------- | -------------
 /v3/link/clicks  | Yes
 /v3/link/countries  | Yes
@@ -85,8 +85,16 @@ Based on <http://dev.bitly.com/>
 
  Citations_Overview : Citations Overview API <- behind VPN with special KEY only
 
-
-
+<http://dev.elsevier.com/metadata.html>  | Implemented Yes/No
+------------- | -------------
+/v3/link/clicks  | Yes
+/v3/link/countries  | Yes
+/v3/link/encoders  | Yes
+/v3/link/encoders_by_count  | Yes
+/v3/link/encoders_count  | Yes
+/v3/link/referrers  | Yes
+/v3/link/referrers_by_domain  | Yes
+/v3/link/referring_domains  | Yes
 
 
 

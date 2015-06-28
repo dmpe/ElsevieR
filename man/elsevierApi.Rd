@@ -13,7 +13,7 @@ elsevierApi(auth_token)
 Assign Elsevier API token
 }
 \examples{
-elsevierApi("7f5eff1eb026d6dff5574fc165e297ee")
+elsevierApi("7f5eff1eb026_dDOG6dff5574fc165e297ee") ## invalid key
 }
 \seealso{
 See \url{http://dev.elsevier.com/myapikey.html}
