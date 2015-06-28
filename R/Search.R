@@ -2,6 +2,8 @@
 #' Test with JSON
 #' @param ScienceDirect search query string
 #' 
+#' @seealso See \url{http://dev.elsevier.com/api_key_settings.html}
+#' http://dev.elsevier.com/tecdoc_api_authentication.html
 #' Load libraries & execute code manually
 #' 
 #' library(httr)
