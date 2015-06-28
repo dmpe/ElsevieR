@@ -1,3 +1,7 @@
+library(httr)
+library(jsonlite)
+library(secure)
+
 #' Test with JSON
 #' @param ScienceDirect search query string
 #' 
