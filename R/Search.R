@@ -1,4 +1,3 @@
-
 #' Test with JSON
 #' @param ScienceDirect search query string
 #' 
@@ -13,7 +12,7 @@
 #' @import jsonlite
 ScienceDirect_SearchJson <- function(query){
 
-  query <- list(query = "genom", apiKey = "5b4c22442fdb5685587b566c7de8a567")
+  query <- list(query = "genom", apiKey = "api")
   searchSci <- "http://api.elsevier.com:80/content/search/scidir"
 
   return_request <- GET(searchSci, query = query)
@@ -78,11 +77,6 @@ Citations_Overview_Json <- function(query){
   return(json_response)
   
 }
-
-
-
-
-
 
 
 

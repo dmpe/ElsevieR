@@ -8,17 +8,18 @@ Authors@R: c(
     person("John", "Malc", email = "cincenko@outlook.com", role = c("aut", "cre"),  comment = "@dmpe")
     )
 Maintainer: John Malc <cincenko@outlook.com>
-Depends:
+Depends: 
   R (>= 3.2.0)
-Imports:
+Imports: 
   httr (>= 1.0.0),
   jsonlite (>= 0.9.16),
   stringr (>= 1.0.0),
   xml2 (>= 0.1.1)
-Suggests:
+Suggests: 
   roxygen2 (>= 4.1.0),
   knitr (>= 1.10.5),
-  testthat (>= 0.10.0)
+  testthat (>= 0.10.0),
+  secure
 VignetteBuilder: knitr
 License: MIT
 URL: https://github.com/dmpe/ElsevierR
