@@ -17,15 +17,11 @@ Tested on Ubuntu 15.04 Server (!)
 
 ### Help needed !!!
 
+Bug reports, ideas and code are always very welcome.
+
 ### Looking for examples and current implementation status ?
 
 Check the vignette in `vignettes` folder.
-
-
- Citations_Overview : Citations Overview API <- behind VPN with special KEY only
-
-
-Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
 
 ### How to contribute 
 

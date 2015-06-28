@@ -7,7 +7,7 @@ elsevier_api_auth_token <- NA
 #' @seealso See \url{http://dev.elsevier.com/myapikey.html}
 #'
 #' @examples
-#' elsevierApi("7f5eff1eb026d6dff5574fc165e297ee")
+#' elsevierApi("7f5eff1eb026_dDOG6dff5574fc165e297ee") ## invalid key
 #'
 #' @export
 elsevierApi <- function(auth_token) {
@@ -17,6 +17,15 @@ elsevierApi <- function(auth_token) {
   invisible(elsevier_api_auth_token)
 }
 
+
+#' @seealso See \url{https://github.com/ropensci/rnoaa/blob/master/R/zzz.r#L145}
+#' @seealso See \url{https://github.com/ropensci/gistr/blob/master/R/gist_auth.R#L24}
+#' 
+#' better api
+check_key <- function(x){
+  tmp <- if (is.null(x)) Sys.getenv("elsevier_api_auth_token", "") else x
+  if (tmp == "") getOption("elsevier_api_auth_token", stop("need an Elsevier's API key")) else tmp
+}
 
 #' @title Generalized function for executing GET requests by always appending user's Bit.ly API Key.
 #'
@@ -30,24 +39,25 @@ elsevierApi <- function(auth_token) {
 #'
 #' @noRd
 doRequest <- function(url, queryParameters = NULL, auth_code = elsevierApi(), showURL = NULL) {
-
+  
   if (is.na(auth_code)) {
     # actually unnecessary; flawn logic because queryParameters will always contain API Key.
     # Yet for making sure that the user has set it, I'll let it go
     stop("Please assign your API Key ('Generic Access Token') ", call. = FALSE)
   } else {
-
+    
     return_request <- GET(url, query = queryParameters)
     stop_for_status(return_request)
     text_response <- content(return_request, as = "text")
     json_response <- fromJSON(text_response)
-
+    
     if (identical(showURL, TRUE)) {
       cat("The requested URL has been this: ", as.character(return_request$request$opts$url), "\n")
     }
     return(json_response)
   }
-
+  
 }
+
 
 
