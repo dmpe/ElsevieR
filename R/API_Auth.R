@@ -7,7 +7,7 @@ elsevier_api_auth_token <- NA
 #' @seealso See \url{http://dev.elsevier.com/myapikey.html}
 #'
 #' @examples
-#' elsevierApi("7f5eff1eb026_dDOG6dff5574fc165e297ee") ## invalid key
+#' elsevierApi("574fc165e297ee") ## invalid key
 #'
 #' @export
 elsevierApi <- function(auth_token) {
@@ -81,14 +81,14 @@ doRequest <- function(url, queryParameters = NULL, auth_code = elsevierApi(), sh
 #' @import secure
 #'
 #' @noRd
-auth_token <- function(httpAcpt = "application/json", author = NULL, inst_token = NULL, apiKey = NULL) {
+auth_token <- function(httpAcpt = "application/json", author = NULL, inst_token = NULL, apiKey = elsevierApi()) {
   
   url <- "http://api.elsevier.com/authenticate/"
   
   returnGEt <- GET(url, query = list(httpAccept = httpAcpt, access_token = author, insttoken = inst_token, apiKey = apiKey) )
   responseText <- content(returnGEt, as = "text")
   
-  returnGEt
+  returnGEt$url
   
   cat(returnGEt$url)
   
