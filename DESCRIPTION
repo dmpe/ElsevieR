@@ -1,9 +1,9 @@
 Package: ElsevierR
 Type: Package
-Title: R Package for Accessing Elsevier's API
-Description: Allows users to access Bit.ly API (http://dev.elsevier.com/) and retreive many useful statistics.
+Title: R Wrapper for accessing Elsevier's API
+Description: Allows users accessing 'Bit.ly API' (http://dev.elsevier.com/) and retreive many useful statistics.
 Version: 0.1.0
-Date: 2015-06-21
+Date: 2015-07-02
 Authors@R: c(
     person("John", "Malc", email = "cincenko@outlook.com", role = c("aut", "cre"),  comment = "@dmpe")
     )
@@ -13,14 +13,12 @@ Depends:
 Imports: 
   httr (>= 1.0.0),
   jsonlite (>= 0.9.16),
-  stringr (>= 1.0.0),
-  xml2 (>= 0.1.1)
+  stringr (>= 1.0.0)
 Suggests: 
   roxygen2 (>= 4.1.0),
   knitr (>= 1.10.5),
   testthat (>= 0.10.0),
-  secure
 VignetteBuilder: knitr
-License: MIT
+License: Apache License 2.0
 URL: https://github.com/dmpe/ElsevierR
 BugReports: https://github.com/dmpe/ElsevierR/issues

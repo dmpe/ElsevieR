@@ -1,5 +1,6 @@
 [![Travis-CI Build Status](https://travis-ci.org/dmpe/ElsevierR.svg?branch=master)](https://travis-ci.org/dmpe/ElsevierR)
 [![Coverage Status](https://img.shields.io/coveralls/dmpe/ElsevierR.svg)](https://coveralls.io/r/dmpe/ElsevierR?branch=master)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/ElsevierR)](http://cran.r-project.org/web/packages/ElsevierR)
 
 R package for [Elsevier API](http://dev.elsevier.com/)
 =======
@@ -41,5 +42,5 @@ Want a direct push access? No problem, just let me know and become a :family:.
 - Developed by ([@dmpe](https://www.github.com/dmpe)) :yum:.
 
 ## Meta
-- Licensed under [MIT](http://en.wikipedia.org/wiki/MIT_License).
+- Licensed under [Apache License 2.0](https://tldrlegal.com/license/apache-license-2.0-%28apache-2.0%29).
 - Please report bugs in <https://github.com/dmpe/elsevierr/issues>.
