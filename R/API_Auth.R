@@ -26,7 +26,7 @@ auth_key <- function(x) {
   } else tmp
 }
 
-#' @rdname auth_name
+#' @rdname auth_key
 #' @export
 auth_tm_key <- function(x) {
   tmp <- if(is.null(x)) {
@@ -70,38 +70,38 @@ doRequest <- function(url, queryParameters = NULL, auth_code = auth_key(NULL), s
   
 }
 
-#' @title This represents interfaces to create a secured authtoken.
-#' 
-#' @seealso See \url{http://api.elsevier.com/documentation/AuthenticationAPI.wadl}
-#' 
-#' @param httpAcpt - This represents the acceptable mime types for which the response can be generated.
-#' @param authorization - This contains the OAuth bearer access token, where the format of the 
-#' field is "<token>" (where the token represents the end-user session key). The presence of a bearer 
-#' token implies the request will be executed against user-based entitlements. This token can also be 
-#' submitted through the HTTP header "Authorization" or the query string parameter "access_token".
-#' @param insttoken - This represents a institution token. If provided, this key (in combination 
-#' with its associated APIKey) is used to establish the credentials needed to access content in this resource.
-#' @param apiKey - Override for HTTP header X-ELS-APIKey, this represents a unique application 
-#' developer key providing access to resource.
-#' 
-#' @example 
-#' auth_token(apiKey = decrypt("ElsevierR_APIKey")$key)
-#' 
-#' @import httr
-#' @import jsonlite
-#'
-#' @noRd
-auth_token <- function(httpAcpt = "application/json", author = NULL, inst_token = NULL, apiKey = auth_key(NULL)) {
-  
-  url <- "http://api.elsevier.com/authenticate/"
-  
-  returnGEt <- GET(url, query = list(httpAccept = httpAcpt, access_token = author, insttoken = inst_token, apiKey = apiKey) )
-  responseText <- content(returnGEt, as = "text")
-  
-  returnGEt$url
-  
-  cat(returnGEt$url)
-  
-}
+# #' @title This represents interfaces to create a secured authtoken.
+# #' 
+# #' @seealso See \url{http://api.elsevier.com/documentation/AuthenticationAPI.wadl}
+# #' 
+# #' @param httpAcpt - This represents the acceptable mime types for which the response can be generated.
+# #' @param authorization - This contains the OAuth bearer access token, where the format of the 
+# #' field is "<token>" (where the token represents the end-user session key). The presence of a bearer 
+# #' token implies the request will be executed against user-based entitlements. This token can also be 
+# #' submitted through the HTTP header "Authorization" or the query string parameter "access_token".
+# #' @param insttoken - This represents a institution token. If provided, this key (in combination 
+# #' with its associated APIKey) is used to establish the credentials needed to access content in this resource.
+# #' @param apiKey - Override for HTTP header X-ELS-APIKey, this represents a unique application 
+# #' developer key providing access to resource.
+# #' 
+# #' @example 
+# #' auth_token(apiKey = decrypt("ElsevierR_APIKey")$key)
+# #' 
+# #' @import httr
+# #' @import jsonlite
+# #'
+# #' @noRd
+# auth_token <- function(httpAcpt = "application/json", author = NULL, inst_token = NULL, apiKey = auth_key(NULL)) {
+#   
+#   url <- "http://api.elsevier.com/authenticate/"
+#   
+#   returnGEt <- GET(url, query = list(httpAccept = httpAcpt, access_token = author, insttoken = inst_token, apiKey = apiKey) )
+#   responseText <- content(returnGEt, as = "text")
+#   
+#   returnGEt$url
+#   
+#   cat(returnGEt$url)
+#   
+# }
 
 

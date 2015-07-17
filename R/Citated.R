@@ -7,17 +7,13 @@
 #' @seealso \url{http://api.elsevier.com/documentation/AbstractCitationCountAPI.wadl}
 #' 
 #' @examples 
-#' Citation_Count(doi ="10.1016/S0014-5793(01)03313-0")
+#' citation_count(doi ="10.1016/S0014-5793(01)03313-0")
 #'
 #' @import httr
 #' @import jsonlite 
 #' 
 #' @export
-citatissson_count <- function(apiKey = auth_key(NULL), showFull = TRUE) {
-  
-}
-
-Citation_Count <- function(doi, apiKey = auth_key(NULL), showFull = TRUE){
+citation_count <- function(doi, apiKey = auth_key(NULL), showFull = TRUE){
   
   searchSci <- "http://api.elsevier.com/content/abstract/citation-count"
   citationCountURL <- "http://api.elsevier.com/content/search/index:SCOPUSquery="

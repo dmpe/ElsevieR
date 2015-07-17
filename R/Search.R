@@ -1,26 +1,26 @@
-#' Test with JSON
-#' @param ScienceDirect search query string
-#' 
-#' @seealso See \url{http://dev.elsevier.com/api_key_settings.html}
-#' http://dev.elsevier.com/tecdoc_api_authentication.html
-#' Load libraries & execute code manually
-#' 
-#' @import httr
-#' @import jsonlite
-ScienceDirect_SearchJson <- function(query){
-
-  query <- list(query = "genom", apiKey = decrypt("ElsevierR_APIKey")$key)
-  searchSci <- "http://api.elsevier.com:80/content/search/scidir"
-
-  return_request <- GET(searchSci, query = query)
-  stop_for_status(return_request)
-  text_response <- content(return_request, as = "text")
-  json_response <- fromJSON(text_response)
-  df_search <- data.frame(json_response$`search-results`$entry)
-  
-  return(json_response)
-
-}
+# #' Test with JSON
+# #' @param ScienceDirect search query string
+# #' 
+# #' @seealso See \url{http://dev.elsevier.com/api_key_settings.html}
+# #' http://dev.elsevier.com/tecdoc_api_authentication.html
+# #' Load libraries & execute code manually
+# #' 
+# #' @import httr
+# #' @import jsonlite
+# ScienceDirect_SearchJson <- function(query){
+# 
+#   query <- list(query = "genom", apiKey = decrypt("ElsevierR_APIKey")$key)
+#   searchSci <- "http://api.elsevier.com:80/content/search/scidir"
+# 
+#   return_request <- GET(searchSci, query = query)
+#   stop_for_status(return_request)
+#   text_response <- content(return_request, as = "text")
+#   json_response <- fromJSON(text_response)
+#   df_search <- data.frame(json_response$`search-results`$entry)
+#   
+#   return(json_response)
+# 
+# }
 
 
 # 

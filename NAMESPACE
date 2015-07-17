@@ -2,6 +2,6 @@
 
 export(auth_key)
 export(auth_tm_key)
-export(citatissson_count)
+export(citation_count)
 import(httr)
 import(jsonlite)

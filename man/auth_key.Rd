@@ -2,9 +2,12 @@
 % Please edit documentation in R/API_Auth.R
 \name{auth_key}
 \alias{auth_key}
+\alias{auth_tm_key}
 \title{Assign Elsevier API tokens}
 \usage{
 auth_key(x)
+
+auth_tm_key(x)
 }
 \arguments{
 \item{x}{- an empty parameter, e.g. NULL}
