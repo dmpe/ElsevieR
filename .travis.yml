@@ -6,9 +6,6 @@ env:
  global:
    - CRAN: http://cran.rstudio.com
 
-env: 
-  - secure: HscF0gKLEZyAQyZKYRIJUgKv8zIRUqOBu5Sx96TwIfwwOCkYfBQdN+LVrxiPuZKmpss3EbcthVsovV0DeBNkE0F8W4Qyse4OwR8SahnkxVycRQVIobUaLxgcDd6+z7EGtW7SXisyUxfPtWV0eV9vdvDfuG39IexR356hm39NA3gE2sPtddq52MhsFPS7BJ1R8xR/Di8jpUZ0F60tO3AMHmUqx52dC5mNjrYfpj7afMJGU1lwBJSwEl5xWcJ71qJGEfH/8O5ZpjL/yxKDdmUXYOsfzPaKPj+YVkgKl9SY1wSCYYeda0VARhxSDkYJ0nHfvEseXa8A6X1f7D0DlLOMPGfic9MT87r/anayBz2BFL5KFPir3b/e80QdxRQwZZkyEK3VWx1rulnDUWDztOtCjYdkfDYs4bXo81JD7jVt2SmM0mMgCAXKIghDoz1EVXViVtHtCf/X1TwyfpnSWvzbRi2+J+J0BWKesl1tqwa1lrmhQZvmTK08QEQLSfCohUV55PAzCeh5DKEu3tuksZiwFX0WbMkbDYVy3qXqFwrwuAn+rY2KK7RJyYF+ZO5Sn0J080ApCix3Yd+6v4hNBZrFRhiWpI+l1rkcGiaXbrgVIZSTBOzQ+1uDP+MoA7z2Znb2wK6hADdbBnAbc72JkE3gqNg1/bPskNJQgXdI3hlocDw=
-  
 r_github_packages:
   - hadley/testthat
   - hadley/httr

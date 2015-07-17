@@ -49,9 +49,9 @@ auth_tm_key <- function(x) {
 #' @import jsonlite
 #'
 #' @noRd
-doRequest <- function(url, queryParameters = NULL, auth_code = auth_key(NULL), showURL = NULL) {
+doRequest <- function(url, queryParameters = NULL, apiKey = auth_key(NULL), showURL = NULL) {
   
-  if (is.na(auth_code)) {
+  if (is.na(apiKey)) {
     # actually unnecessary; flawn logic because queryParameters will always contain API Key.
     # Yet for making sure that the user has set it, I'll let it go
     stop("Please assign your API Key ('Generic Access Token') ", call. = FALSE)

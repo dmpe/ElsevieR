@@ -1,7 +1,12 @@
-## ---- fig.show='hold'----------------------------------------------------
-plot(1:10)
-plot(10:1)
+## ---- eval=FALSE, echo=TRUE----------------------------------------------
+#  # options(Elsevier_API = "F1QH-Q64B-BSBI-JASJ", Elsevier_TM_API = "1QH-Q64B-BSBI-JAS")
+#  
 
-## ---- echo=FALSE, results='asis'-----------------------------------------
-knitr::kable(head(mtcars, 10))
+## ---- echo=F, eval=TRUE--------------------------------------------------
+library(ElsevierR)
+
+options(Elsevier_API = "5b4c22442fdb5685587b566c7de8a567", Elsevier_TM_API = "c2494d00460743fb8a299ca3de737083")
+
+# auth_key(NULL)
+# auth_tm_key(NULL)
 
