@@ -16,8 +16,5 @@ Test with JSON
 See \url{http://dev.elsevier.com/api_key_settings.html}
 http://dev.elsevier.com/tecdoc_api_authentication.html
 Load libraries & execute code manually
-
-library(httr)
-library(jsonlite)
 }
 

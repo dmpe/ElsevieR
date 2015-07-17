@@ -3,17 +3,19 @@ Type: Package
 Title: R Wrapper for accessing Elsevier's API
 Description: Allows users accessing 'Elsevier API' (http://dev.elsevier.com/) and retreive many useful statistics. In particular, it can be used for 
 Version: 0.1.0
-Date: 2015-07-02
+Date: 2015-07-16
 Authors@R: c(
     person("John", "Malc", email = "cincenko@outlook.com", role = c("aut", "cre"),  comment = "@dmpe")
     )
-Maintainer: John Malc <cincenko@outlook.com>
 Depends: 
   R (>= 3.2.0)
 Imports: 
   httr (>= 1.0.0),
   jsonlite (>= 0.9.16),
-  stringr (>= 1.0.0)
+  stringr (>= 1.0.0), 
+  tm, 
+  wordcloud, 
+  dplyr
 Suggests: 
   roxygen2 (>= 4.1.0),
   knitr (>= 1.10.5),

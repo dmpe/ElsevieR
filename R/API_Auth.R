@@ -1,30 +1,41 @@
-elsevier_api_auth_token <- NA
-
-#' @title Assign Elsevier API token
+#' @title Assign Elsevier API tokens
+#' 
+#' @description There are two API Keys. One is for the access of almost everything, except for text-mining 
+#' capabilities (Elsevier_API). Another one (Elsevier_TM_API) is only for the purpose of using text-mining
+#' functionality. See URL for your restrictions below. The first one is always required whereas the 
+#' second one is optional.
+#' 
+#' @param x - an empty parameter, e.g. NULL
 #'
-#' @param auth_token - Passed parameter to set Bit.ly Generic Access Token \code{\link{elsevierApi}}.
-#'
-#' @seealso See \url{http://dev.elsevier.com/myapikey.html}
-#'
-#' @examples
-#' elsevierApi("574fc165e297ee") ## invalid key
-#'
-#' @export
-elsevierApi <- function(auth_token) {
-  if (!missing(auth_token)) {
-    assignInMyNamespace('elsevier_api_auth_token', auth_token)
-  }
-  invisible(elsevier_api_auth_token)
-}
-
-
+#' @seealso Register your Keys \url{http://dev.elsevier.com/myapikey.html}
+#' @seealso See for restrictions which apply to your key \url{http://dev.elsevier.com/api_key_settings.html}
 #' @seealso See \url{https://github.com/ropensci/rnoaa/blob/master/R/zzz.r#L145}
 #' @seealso See \url{https://github.com/ropensci/gistr/blob/master/R/gist_auth.R#L24}
 #' 
-#' better api
-check_key <- function(x){
-  tmp <- if (is.null(x)) Sys.getenv("elsevier_api_auth_token", "") else x
-  if (tmp == "") getOption("elsevier_api_auth_token", stop("need an Elsevier's API key")) else tmp
+#' @examples 
+#' options(Elsevier_API = "F1QH-Q64B-BSBI-JASJ", Elsevier_TM_API = "1QH-Q64B-BSBI-JAS")
+#' 
+#' @export
+auth_key <- function(x) {
+  tmp <- if(is.null(x)) {
+    Sys.getenv("Elsevier_API", "")
+  } else x
+  
+  if(tmp == "") {
+    getOption("Elsevier_API", stop("you need to set up your Elsevier API Key"))
+  } else tmp
+}
+
+#' @rdname auth_name
+#' @export
+auth_tm_key <- function(x) {
+  tmp <- if(is.null(x)) {
+    Sys.getenv("Elsevier_TM_API", "")
+  } else x
+  
+  if(tmp == "") {
+    getOption("Elsevier_TM_API",  stop("you need to set up your Elsevier Text-Mining API Key"))
+  } else tmp
 }
 
 #' @title Generalized function for executing GET requests by always appending user's Bit.ly API Key.
@@ -38,7 +49,7 @@ check_key <- function(x){
 #' @import jsonlite
 #'
 #' @noRd
-doRequest <- function(url, queryParameters = NULL, auth_code = elsevierApi(), showURL = NULL) {
+doRequest <- function(url, queryParameters = NULL, auth_code = auth_key(NULL), showURL = NULL) {
   
   if (is.na(auth_code)) {
     # actually unnecessary; flawn logic because queryParameters will always contain API Key.
@@ -52,7 +63,7 @@ doRequest <- function(url, queryParameters = NULL, auth_code = elsevierApi(), sh
     json_response <- fromJSON(text_response)
     
     if (identical(showURL, TRUE)) {
-      cat("The requested URL has been this: ", as.character(return_request$request$opts$url), "\n")
+      cat("The requested URL has been this: ", return_request$url, "\n")
     }
     return(json_response)
   }
@@ -78,10 +89,9 @@ doRequest <- function(url, queryParameters = NULL, auth_code = elsevierApi(), sh
 #' 
 #' @import httr
 #' @import jsonlite
-#' @import secure
 #'
 #' @noRd
-auth_token <- function(httpAcpt = "application/json", author = NULL, inst_token = NULL, apiKey = elsevierApi()) {
+auth_token <- function(httpAcpt = "application/json", author = NULL, inst_token = NULL, apiKey = auth_key(NULL)) {
   
   url <- "http://api.elsevier.com/authenticate/"
   

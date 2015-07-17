@@ -1,6 +1,3 @@
-library(httr)
-library(jsonlite)
-
 #' Test with JSON
 #' @param ScienceDirect search query string
 #' 
@@ -8,12 +5,8 @@ library(jsonlite)
 #' http://dev.elsevier.com/tecdoc_api_authentication.html
 #' Load libraries & execute code manually
 #' 
-#' library(httr)
-#' library(jsonlite)
-#'
 #' @import httr
 #' @import jsonlite
-#' @import secure
 ScienceDirect_SearchJson <- function(query){
 
   query <- list(query = "genom", apiKey = decrypt("ElsevierR_APIKey")$key)
@@ -30,58 +23,53 @@ ScienceDirect_SearchJson <- function(query){
 }
 
 
-
-#' Test with XML
-#' @param ScienceDirect search query string
-#'
-#' library(xml2)
-#' library(XML)
-#' 
-#' @import httr
-#' @import xml2
-#' @import XML
-#' @import secure
-ScienceDirect_SearchXML <- function(query){
-  
-  query <- list(query = "genom", apiKey = decrypt("ElsevierR_APIKey")$key)
-  searchSci <- "http://api.elsevier.com:80/content/search/scidir"
-  
-  return_request <- GET(searchSci, query = query, accept("application/xml"))
-  stop_for_status(return_request)
-  text_response <- content(return_request, as = "text")
-  
-  #XML
-  xmlBig <- xmlTreeParse(text_response, asText=TRUE)
-  xmlBig <- xmlToList(xmlBig)
-  # https://stackoverflow.com/questions/17198658/how-to-parse-xml-to-r-data-frame
-  xmlBig2 <- xmlToDataFrame(xmlBig)
-  #xml2
-  xml_response <- read_xml(text_response)
-  return(xml_response)
-#   head(xml_structure(xml_response),1)
-  
-}
-
-
-
-
-#' citations_overview(documentIdentifier = "doi", query = "10.1016/S0014-5793(01)03313-0")
-#' @description Abstract Citation API allows to retrieve citations given one of the document identifiers (DOI, PII, scopus_id or pubmed_id).
-citations_overview <- function(documentIdentifier = c("doi", "scopus_id", "pubmed_id", "pii"), query, apiKey = elsevierApi(), httpAccept="application/json") {
-  
-  url <- "http://api.elsevier.com/content/abstract/citations"
-  
-  queryParams <- list(documentIdentifier = asdas, apiKey = apiKey, httpAccept = httpAccept )
-  queryParams
-}
-
-
-
-
-
-
-
-
-
-
-
+# 
+# #' Test with XML
+# #' @param ScienceDirect search query string
+# #' 
+# #' @import httr
+# 
+# ScienceDirect_SearchXML <- function(query){
+#   
+#   query <- list(query = "genom", apiKey = decrypt("ElsevierR_APIKey")$key)
+#   searchSci <- "http://api.elsevier.com:80/content/search/scidir"
+#   
+#   return_request <- GET(searchSci, query = query, accept("application/xml"))
+#   stop_for_status(return_request)
+#   text_response <- content(return_request, as = "text")
+#   
+#   #XML
+#   xmlBig <- xmlTreeParse(text_response, asText=TRUE)
+#   xmlBig <- xmlToList(xmlBig)
+#   # https://stackoverflow.com/questions/17198658/how-to-parse-xml-to-r-data-frame
+#   xmlBig2 <- xmlToDataFrame(xmlBig)
+#   #xml2
+#   xml_response <- read_xml(text_response)
+#   return(xml_response)
+# #   head(xml_structure(xml_response),1)
+#   
+# }
+# 
+# 
+# 
+# 
+# #' citations_overview(documentIdentifier = "doi", query = "10.1016/S0014-5793(01)03313-0")
+# #' @description Abstract Citation API allows to retrieve citations given one of the document identifiers (DOI, PII, scopus_id or pubmed_id).
+# citations_overview <- function(documentIdentifier = c("doi", "scopus_id", "pubmed_id", "pii"), query, apiKey = auth_key(NULL), httpAccept="application/json") {
+#   
+#   url <- "http://api.elsevier.com/content/abstract/citations"
+#   
+#   queryParams <- list(documentIdentifier = asdas, apiKey = apiKey, httpAccept = httpAccept )
+#   queryParams
+# }
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 

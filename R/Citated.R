@@ -13,11 +13,11 @@
 #' @import jsonlite 
 #' 
 #' @export
-citation_count() <- function(apiKey = elsevierApi(), showFull = TRUE) {
+citatissson_count <- function(apiKey = auth_key(NULL), showFull = TRUE) {
   
 }
 
-Citation_Count <- function(doi, apiKey = elsevierApi(), showFull = TRUE){
+Citation_Count <- function(doi, apiKey = auth_key(NULL), showFull = TRUE){
   
   searchSci <- "http://api.elsevier.com/content/abstract/citation-count"
   citationCountURL <- "http://api.elsevier.com/content/search/index:SCOPUSquery="

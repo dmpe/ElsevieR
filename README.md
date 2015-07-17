@@ -1,6 +1,6 @@
 [![Travis-CI Build Status](https://travis-ci.org/dmpe/ElsevierR.svg?branch=master)](https://travis-ci.org/dmpe/ElsevierR)
-[![Coverage Status](https://img.shields.io/coveralls/dmpe/ElsevierR.svg)](https://coveralls.io/r/dmpe/ElsevierR?branch=master)
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/ElsevierR)](http://cran.r-project.org/web/packages/ElsevierR)
+[![Coverage Status](https://coveralls.io/repos/dmpe/ElsevierR/badge.svg?branch=master&service=github)](https://coveralls.io/github/dmpe/ElsevierR?branch=master)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/ElsevierR)](http://cran.r-project.org/?package=ElsevierR)
 
 R package for [Elsevier API](http://dev.elsevier.com/)
 =======
@@ -13,8 +13,7 @@ Use `devtools` to install the latest version from Github:
 library(devtools)
 devtools::install_github("dmpe/ElsevierR", build_vignettes = TRUE)
 ```
-Tested on Ubuntu 15.04 Server (!)
-<!--  and Windows 10 (64 bit using [Revolution R Open](http://mran.revolutionanalytics.com/download/)) -->
+Tested on Ubuntu 15.04 Server (!) and Windows 10 (R 3.2.1-patched) 
 
 ### Help needed !!!
 
