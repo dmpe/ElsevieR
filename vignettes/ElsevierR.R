@@ -10,3 +10,6 @@ options(Elsevier_API = "5b4c22442fdb5685587b566c7de8a567", Elsevier_TM_API = "c2
 # auth_key(NULL)
 # auth_tm_key(NULL)
 
+## ------------------------------------------------------------------------
+citation_count_scopus(value ="DOI(10.1016/S0014-5793(01)03313-0)")
+

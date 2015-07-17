@@ -2,6 +2,7 @@
 
 export(auth_key)
 export(auth_tm_key)
-export(citation_count)
+export(citation_count_scopus)
+export(journal_metrics)
 import(httr)
 import(jsonlite)

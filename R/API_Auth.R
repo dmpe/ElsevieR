@@ -38,10 +38,10 @@ auth_tm_key <- function(x) {
   } else tmp
 }
 
-#' @title Generalized function for executing GET requests by always appending user's Bit.ly API Key.
+#' @title Generalized function for executing GET requests 
 #'
 #' @param url - which is used for the request
-#' @param authcode - calls the elsevierApi \code{\link{elsevierApi}}
+#' @param authcode - calls the elsevierApi \code{\link{auth_key}}
 #' @param queryParameters - parameters that are used for building a URL
 #' @param showURL - for debugging purposes only: it shows what URL has been called
 #'
@@ -49,23 +49,30 @@ auth_tm_key <- function(x) {
 #' @import jsonlite
 #'
 #' @noRd
-doRequest <- function(url, queryParameters = NULL, apiKey = auth_key(NULL), showURL = NULL) {
+doRequest <- function(url, queryParameters = NULL, apiKey = auth_key(NULL), 
+                      apiKeyTM = auth_tm_key(NULL), showURL = NULL) {
   
-  if (is.na(apiKey)) {
-    # actually unnecessary; flawn logic because queryParameters will always contain API Key.
-    # Yet for making sure that the user has set it, I'll let it go
-    stop("Please assign your API Key ('Generic Access Token') ", call. = FALSE)
+  if ( (is.null(apiKey) & is.null(apiKeyTM)) | is.null(apiKey)) {
+    stop("Please assign your API Keys", call. = FALSE)
+    
   } else {
     
-    return_request <- GET(url, query = queryParameters)
-    stop_for_status(return_request)
-    text_response <- content(return_request, as = "text")
-    json_response <- fromJSON(text_response)
+    getResponse <- GET(url, query = queryParameters)
+    stop_for_status(getResponse)
+    
+    rawTextResponse <- content(getResponse, as = "text")
+    
+    if (grepl("application/json", getResponse$headers$`content-type`)) {
+      response <- fromJSON(rawTextResponse)
+    } else {
+      response <- rawTextResponse
+    }
     
     if (identical(showURL, TRUE)) {
-      cat("The requested URL has been this: ", return_request$url, "\n")
+      cat("The requested URL has been this: ", getResponse$url, "\n") 
     }
-    return(json_response)
+    
+    return(response)
   }
   
 }
