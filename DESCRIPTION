@@ -10,12 +10,13 @@ Authors@R: c(
 Depends: 
   R (>= 3.2.0)
 Imports: 
-  httr (>= 1.0.0),
   jsonlite (>= 0.9.16),
   stringr (>= 1.0.0), 
   tm, 
   wordcloud, 
-  dplyr
+  dplyr, 
+  curl,
+  httr (>= 1.0.0)
 Suggests: 
   roxygen2 (>= 4.1.0),
   knitr (>= 1.10.5),

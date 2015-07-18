@@ -5,7 +5,7 @@
 \title{Retrieving Scopus Cited-By counts}
 \usage{
 citation_count_scopus(value, apiKey = auth_key(NULL),
-  fields = "citedby-count")
+  fields = "citedby-count", showRequestURL = FALSE)
 }
 \description{
 With Scopus Abstract Citation Count API you want to show the
@@ -23,6 +23,7 @@ the DOI for every cited-by count in the response, which will allow you to map th
 }
 \examples{
 citation_count_scopus(value = "DOI(10.1016/S0014-5793(01)03313-0)")
+citation_count_scopus(value = "DOI(10.1016/j.stem.2011.10.002) OR DOI(10.1098/rsbl.2011.0293)", fields = "citedby-count,prism:doi")
 }
 \seealso{
 \url{http://dev.elsevier.com/tecdoc_cited_by_in_scopus.html}

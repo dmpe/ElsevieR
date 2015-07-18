@@ -15,17 +15,18 @@
 #' 
 #' @examples 
 #' citation_count_scopus(value = "DOI(10.1016/S0014-5793(01)03313-0)")
+#' citation_count_scopus(value = "DOI(10.1016/j.stem.2011.10.002) OR DOI(10.1098/rsbl.2011.0293)", fields = "citedby-count,prism:doi")
 #' 
 #' @export
-citation_count_scopus <- function(value, apiKey = auth_key(NULL), fields = "citedby-count"){
+citation_count_scopus <- function(value, apiKey = auth_key(NULL), fields = "citedby-count", showRequestURL = FALSE){
   
   citationCountURL <- "http://api.elsevier.com/content/search/index:SCOPUS"
   
   query <- list(query = value, apiKey = apiKey, field = fields)
-  return_request <- doRequest(citationCountURL, query = query)
+  return_request <- doRequest(citationCountURL, query = query, showURL = showRequestURL)
   
   # we request that wherever you show them, you have to attribute and link back to the cited-by list on Scopus - something like "Cited x times in Scopus"
-  citedByScopusString <- cat("Cited", return_request$entry$`citedby-count`, "times in Scopus")
+  citedByScopusString <- cat("Cited", return_request$`search-results`$entry$`citedby-count`, "times in Scopus")
   
   return(citedByScopusString)
 }

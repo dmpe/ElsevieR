@@ -47,6 +47,7 @@ auth_tm_key <- function(x) {
 #'
 #' @import httr
 #' @import jsonlite
+#' @import curl
 #'
 #' @noRd
 doRequest <- function(url, queryParameters = NULL, apiKey = auth_key(NULL), 
@@ -58,6 +59,11 @@ doRequest <- function(url, queryParameters = NULL, apiKey = auth_key(NULL),
   } else {
     
     getResponse <- GET(url, query = queryParameters)
+    
+    if (identical(showURL, TRUE)) {
+      cat("The requested URL has been this: ", getResponse$url, "\n") 
+    }
+    
     stop_for_status(getResponse)
     
     rawTextResponse <- content(getResponse, as = "text")
@@ -68,9 +74,7 @@ doRequest <- function(url, queryParameters = NULL, apiKey = auth_key(NULL),
       response <- rawTextResponse
     }
     
-    if (identical(showURL, TRUE)) {
-      cat("The requested URL has been this: ", getResponse$url, "\n") 
-    }
+
     
     return(response)
   }
