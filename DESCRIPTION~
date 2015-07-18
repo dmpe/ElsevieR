@@ -1,4 +1,4 @@
-Package: ElsevieR
+Package: ElsevierR
 Type: Package
 Title: R Wrapper for accessing Elsevier's API
 Description: Allows users accessing 'Elsevier API' (http://dev.elsevier.com/) and retreive many useful statistics. In particular, it can be used for 
