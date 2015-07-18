@@ -1,5 +1,5 @@
 ---
-title: "ElsevierR Tutorial"
+title: "ElsevieR Tutorial"
 author: "dmpe @ github"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
@@ -9,10 +9,11 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-Requirenments:
+## Requirenments:
 
-1. Use your school/university/work VPN to access **full** sciencedirect/scopus website.
-
+1. Use your school/university/work VPN (e.g. cisco etc.) to access **full** sciencedirect/scopus website.
+2. Set your API Keys
+3. Win !
 
 ## API Key
 
@@ -23,7 +24,7 @@ Requirenments:
 
 
 ```{r, echo=F, eval=TRUE}
-library(ElsevierR)
+library(ElsevieR)
 
 options(Elsevier_API = "5b4c22442fdb5685587b566c7de8a567", Elsevier_TM_API = "c2494d00460743fb8a299ca3de737083")
 
@@ -32,9 +33,11 @@ options(Elsevier_API = "5b4c22442fdb5685587b566c7de8a567", Elsevier_TM_API = "c2
 ```
 
 
+## Citation.R
 
-## Styles
-
+```{r}
+citation_count_scopus(value ="DOI(10.1016/S0014-5793(01)03313-0)")
+```
 
 
 ## Figures

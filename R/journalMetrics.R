@@ -29,10 +29,13 @@ journal_metrics <- function(isnn, apiKey = auth_key(NULL), fields = "SJR,SNIP", 
   journalMetricsURL <- "http://api.elsevier.com/content/serial/title"
   
   query <- list(isnn = isnn, apiKey = apiKey, field = fields, view = view)
+  
   return_request <- doRequest(journalMetricsURL, query = query, showURL = showRequestURL)
   
-  View(return_request$`serial-metadata-response`$entry)
+  citedByScopusString <- cat("Cited", return_request$`serial-metadata-response`$entry, "times in Scopus")
   
-  return(return_request$`serial-metadata-response`$entry)
+  print(citedByScopusString)
+  
+  return(return_request)
 }
 

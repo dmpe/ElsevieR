@@ -1,6 +1,6 @@
-[![Travis-CI Build Status](https://travis-ci.org/dmpe/ElsevierR.svg?branch=master)](https://travis-ci.org/dmpe/ElsevierR)
-[![Coverage Status](https://coveralls.io/repos/dmpe/ElsevierR/badge.svg?branch=master&service=github)](https://coveralls.io/github/dmpe/ElsevierR?branch=master)
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/ElsevierR)](http://cran.r-project.org/?package=ElsevierR)
+[![Travis-CI Build Status](https://travis-ci.org/dmpe/ElsevieR.svg?branch=master)](https://travis-ci.org/dmpe/ElsevieR)
+[![Coverage Status](https://coveralls.io/repos/dmpe/ElsevieR/badge.svg?branch=master&service=github)](https://coveralls.io/github/dmpe/ElsevieR?branch=master)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/ElsevieR)](http://cran.r-project.org/?package=ElsevieR)
 
 R package for [Elsevier API](http://dev.elsevier.com/)
 =======

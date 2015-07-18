@@ -1,4 +1,4 @@
 library(testthat)
-library(ElsevierR)
+library(ElsevieR)
 
-test_check("ElsevierR")
+test_check("ElsevieR")
