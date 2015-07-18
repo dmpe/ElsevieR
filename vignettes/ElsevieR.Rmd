@@ -12,19 +12,18 @@ vignette: >
 ## Requirenments:
 
 1. Use your school/university/work VPN (e.g. cisco etc.) to access **full** sciencedirect/scopus website.
-2. Set your API Keys
+2. Set your API Keys (see above for required VPN access)
 3. Win !
 
 ## API Key
 
-```{r, eval=FALSE, echo=TRUE}
-# options(Elsevier_API = "F1QH-Q64B-BSBI-JASJ", Elsevier_TM_API = "1QH-Q64B-BSBI-JAS")
+```{r}
+library(ElsevieR)
 
+# options(Elsevier_API = "F1QH-Q64B-BSBI-JASJ", Elsevier_TM_API = "1QH-Q64B-BSBI-JAS")
 ```
 
 ```{r, echo=F, eval=TRUE}
-library(ElsevieR)
-
 options(Elsevier_API = "5b4c22442fdb5685587b566c7de8a567", Elsevier_TM_API = "c2494d00460743fb8a299ca3de737083")
 # auth_key(NULL)
 # auth_tm_key(NULL)
@@ -34,7 +33,13 @@ options(Elsevier_API = "5b4c22442fdb5685587b566c7de8a567", Elsevier_TM_API = "c2
 
 ```{r}
 citation_count_scopus(value = "DOI(10.1016/S0014-5793(01)03313-0)", showRequestURL = TRUE)
-citation_count_scopus(value = "DOI(10.1016/j.stem.2011.10.002) OR DOI(10.1098/rsbl.2011.0293)", fields = "citedby-count,prism:doi", showRequestURL = TRUE)
+citation_count_scopus(value = "DOI(10.1016/j.stem.2011.10.002) OR DOI(10.1098/rsbl.2011.0293)", fields = "citedby-count", prism = "doi", showRequestURL = TRUE)
+```
+
+## Journal Metrics.R
+
+```{r}
+journal_metrics(isnn = "0309-0566", showRequestURL = TRUE)
 ```
 
 

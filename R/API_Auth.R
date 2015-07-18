@@ -47,7 +47,6 @@ auth_tm_key <- function(x) {
 #'
 #' @import httr
 #' @import jsonlite
-#' @import curl
 #'
 #' @noRd
 doRequest <- function(url, queryParameters = NULL, apiKey = auth_key(NULL), 

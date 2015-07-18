@@ -5,10 +5,10 @@
 \title{Journal Metrics: Showing SJR and SNIP}
 \usage{
 journal_metrics(isnn, apiKey = auth_key(NULL), fields = "SJR,SNIP",
-  view = "STANDARD", showRequestURL = TRUE)
+  view = "STANDARD", showRequestURL = F)
 }
 \arguments{
-\item{view}{- BASIC, ENHANCED, STANDARD (default)}
+\item{view}{- BASIC, ENHANCED, STANDARD (default); See \url{http://api.elsevier.com/documentation/metadata/SerialTitleViews.htm}}
 
 \item{issn}{- See \url{https://en.wikipedia.org/wiki/International_Standard_Serial_Number}}
 }
@@ -31,10 +31,6 @@ journal_metrics(isnn = "0309-0566")
 \seealso{
 \url{http://dev.elsevier.com/tecdoc_journal_metrics.html}
 
-\url{http://dev.elsevier.com/journal_metrics.html}
-
 \url{http://api.elsevier.com/documentation/SerialTitleAPI.wadl}
-
-\url{http://api.elsevier.com/documentation/metadata/SerialTitleViews.htm}
 }
 

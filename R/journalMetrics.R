@@ -11,20 +11,19 @@
 #' of the journals where such citations come from. [Powered by Scopus] 
 #' 
 #' @seealso \url{http://dev.elsevier.com/tecdoc_journal_metrics.html}
-#' @seealso \url{http://dev.elsevier.com/journal_metrics.html}
 #' @seealso \url{http://api.elsevier.com/documentation/SerialTitleAPI.wadl}
-#' @seealso \url{http://api.elsevier.com/documentation/metadata/SerialTitleViews.htm}
 #' 
-#' @param view - BASIC, ENHANCED, STANDARD (default)
+#' @param view - BASIC, ENHANCED, STANDARD (default); See \url{http://api.elsevier.com/documentation/metadata/SerialTitleViews.htm}
 #' @param issn - See \url{https://en.wikipedia.org/wiki/International_Standard_Serial_Number}
 #' 
 #' @examples 
 #' ## Example request, retrieving only the SJR and SNIP, for the "European Journal of Marketing" (by ISSN): 
 #' journal_metrics(isnn = "0309-0566")
 #' 
+#' @import dplyr
 #' @export
 journal_metrics <- function(isnn, apiKey = auth_key(NULL), fields = "SJR,SNIP", view = "STANDARD", 
-                            showRequestURL = TRUE){
+                            showRequestURL = F){
   
   journalMetricsURL <- "http://api.elsevier.com/content/serial/title"
   
@@ -32,10 +31,23 @@ journal_metrics <- function(isnn, apiKey = auth_key(NULL), fields = "SJR,SNIP", 
   
   return_request <- doRequest(journalMetricsURL, query = query, showURL = showRequestURL)
   
-  citedByScopusString <- cat("Cited", return_request$`serial-metadata-response`$entry, "times in Scopus")
+  SNIP <- bind_rows(return_request$`serial-metadata-response`$entry$SNIPList$SNIP)
+  SJR <- bind_rows(return_request$`serial-metadata-response`$entry$SJRList$SJR)
   
-  print(citedByScopusString)
+  SNIP$id <- rownames(SNIP) 
+  SNIP <- data.frame(melt(SNIP))
   
-  return(return_request)
+  SJR$id <- rownames(SJR) 
+  SJR <- data.frame(melt(SJR))
+  
+  
+  df_jm <- data.frame(URL = return_request$`serial-metadata-response`$entry$`prism:url`, 
+                      SNIP_Year = ifelse(!is.null(SNIP$X.year), SNIP$X.year, NA),
+                      SNIP_Value = ifelse(!is.null(SNIP$X.), SNIP$X., NA),
+                      SJR_Year = ifelse(!is.null(SJR$X.year), SJR$X.year, NA),
+                      SJR_Value = ifelse(!is.null(SJR$X.), SJR$X., NA))
+  
+  
+  return(df_jm)
 }
 
