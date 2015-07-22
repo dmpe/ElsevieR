@@ -16,7 +16,8 @@ Imports:
   wordcloud, 
   dplyr, 
   curl,
-  httr (>= 1.0.0)
+  httr (>= 1.0.0), 
+  reshape2
 Suggests: 
   roxygen2 (>= 4.1.0),
   knitr (>= 1.10.5),

@@ -21,6 +21,8 @@
 #' journal_metrics(isnn = "0309-0566")
 #' 
 #' @import dplyr
+#' @import reshape2
+#' 
 #' @export
 journal_metrics <- function(isnn, apiKey = auth_key(NULL), fields = "SJR,SNIP", view = "STANDARD", 
                             showRequestURL = F){
@@ -31,9 +33,9 @@ journal_metrics <- function(isnn, apiKey = auth_key(NULL), fields = "SJR,SNIP", 
   
   return_request <- doRequest(journalMetricsURL, query = query, showURL = showRequestURL)
   
-  SNIP <- bind_rows(return_request$`serial-metadata-response`$entry$SNIPList$SNIP)
-  SJR <- bind_rows(return_request$`serial-metadata-response`$entry$SJRList$SJR)
-  
+  SNIP <- return_request$`serial-metadata-response`$entry$SNIPList$SNIP
+  SJR <- return_request$`serial-metadata-response`$entry$SJRList$SJR
+
   SNIP$id <- rownames(SNIP) 
   SNIP <- data.frame(melt(SNIP))
   
